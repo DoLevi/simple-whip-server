@@ -331,8 +331,8 @@ function setupRest(app) {
 		// Take note of SDP and ICE credentials
 		endpoint.sdpOffer = req.body;
 		endpoint.ice = {
-			ufrag: endpoint.sdpOffer.match(/a=ice-ufrag:(.*)\r\n/)[1],
-			pwd: endpoint.sdpOffer.match(/a=ice-pwd:(.*)\r\n/)[1]
+			ufrag: endpoint.sdpOffer.match(/a=ice-ufrag:(.*)\r\n/)?.[1],
+			pwd: endpoint.sdpOffer.match(/a=ice-pwd:(.*)\r\n/)?.[1]
 		};
 		// Publish
 		janus.publish(details, function(err, result) {
